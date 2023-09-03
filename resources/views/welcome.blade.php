@@ -77,8 +77,13 @@
     </div>
     <script>
         $(document).ready(function() {
-            $("#login").on("submit",  function(e) {
+            $("#login").on("submit", function(e) {
                 e.preventDefault();
+                // $.ajaxSetup({
+                //     headers: {
+                //         'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+                //     }
+                // });
                 // var formData = {
                 //     'email': $("#email").val(),
                 //     'password': $("#password").val(),
@@ -88,7 +93,7 @@
                 console.log(formData);
                 $("#button").html("Login ...");
                 $.ajax({
-                    url:  $(this).attr('action'),//'{{ route('login') }}',
+                    url: $(this).attr('action'), //'{{ route('login') }}',
                     type: 'post',
                     data: $(this).serialize(),
                     dataType: 'json',
@@ -106,7 +111,7 @@
                                 "</div>");
                         });
                         setTimeout(() => {
-                            location.reload(true);
+                            $("#errors-list").empty();
                         }, 1000);
                     }
                 });
