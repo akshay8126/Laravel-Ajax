@@ -21,8 +21,8 @@ Route::get('/', function () {
 
 
 Route::controller(LoginController::class)->group(function () {
-    Route::post('/login', 'login')->name('login');
-    Route::get('/register', 'register')->name('register');
+    Route::post('/login', 'login')->name('login')->middleware('guest');
+    Route::get('/register', 'register')->name('register')->middleware('guest');
     Route::post('/register-data', 'registerdata')->name('registerdata');
     Route::post('/logout', 'logout')->name('logout');
 });
